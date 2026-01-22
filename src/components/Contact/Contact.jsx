@@ -2,7 +2,7 @@ import s from "./Contact.module.css";
 
 export default function Contact({ contact, onDelete }) {
   const { id, number, name } = contact;
-  console.log(id);
+
   return (
     <div className={s.container}>
       <div>
