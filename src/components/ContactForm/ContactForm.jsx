@@ -8,6 +8,7 @@ import s from "./ContactForm.module.css";
 export default function ContactForm({ onAddContact }) {
   const nameID = useId();
   const numberId = useId();
+  const id = nanoid();
 
   const ContactSchema = Yup.object().shape({
     name: Yup.string()
@@ -21,7 +22,7 @@ export default function ContactForm({ onAddContact }) {
   });
 
   const onFormSubmir = (values, actions) => {
-    const newContact = { ...values, id: nanoid() };
+    const newContact = { ...values, id };
     onAddContact(newContact);
     actions.resetForm();
   };

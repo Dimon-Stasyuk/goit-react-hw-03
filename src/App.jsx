@@ -12,16 +12,17 @@ const initialState = [
 ];
 
 function App() {
-  const [contacts, setContacts] = useState(
-    () => JSON.parse(localStorage.getItem("contacts")) ?? initialState,
-  );
+  const [contacts, setContacts] = useState(() => {
+    const savedContacts = JSON.parse(localStorage.getItem("contacts"));
+    return savedContacts ?? initialState;
+  });
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
     window.localStorage.setItem("contacts", JSON.stringify(contacts));
   }, [contacts]);
 
-  const filteredContacts = contacts.filter((contact) =>
+  const visibleContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(filter.toLowerCase()),
   );
 
@@ -45,7 +46,7 @@ function App() {
         <h1>Phonebook</h1>
         <ContactForm onAddContact={addContact} />
         <SearchBox onFilterChange={filterChange} filterValue={filter} />
-        <ContactList contacts={filteredContacts} onDelete={deleteContact} />
+        <ContactList contacts={visibleContacts} onDelete={deleteContact} />
       </div>
     </>
   );
