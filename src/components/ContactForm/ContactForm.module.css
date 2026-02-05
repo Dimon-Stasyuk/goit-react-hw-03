@@ -16,3 +16,8 @@
   width: 100px;
   margin-top: 10px;
 }
+
+.errMessage {
+  color: red;
+  font-size: 12px;
+}

@@ -34,10 +34,10 @@ export default function ContactForm({ onAddContact }) {
       <Form className={s.form}>
         <label htmlFor='nameId'>Name</label>
         <Field type='text' name='name' id={nameID} />
-        <ErrorMessage name='name' component='span' />
+        <ErrorMessage className={s.errMessage} name='name' component='span' />
         <label htmlFor='numberId'>Number</label>
         <Field type='text' name='number' id={numberId} />
-        <ErrorMessage name='number' component='span' />
+        <ErrorMessage className={s.errMessage} name='number' component='span' />
         <button type='submit'>Submit</button>
       </Form>
     </Formik>
