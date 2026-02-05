@@ -23,6 +23,12 @@ function App() {
     setContacts(contacts.filter((contact) => contact.id !== id));
   };
 
+  const addContact = (newContact) => {
+    console.log(newContact);
+    setContacts((prev) => {
+      return [...prev, newContact];
+    });
+  };
   const filterChange = (e) => {
     setFilter(e.target.value);
   };
@@ -31,7 +37,7 @@ function App() {
     <>
       <div className='container'>
         <h1>Phonebook</h1>
-        <ContactForm />
+        <ContactForm onAddContact={addContact} />
         <SearchBox onFilterChange={filterChange} filterValue={filter} />
         <ContactList contacts={filteredContacts} onDelete={deleteContact} />
       </div>
